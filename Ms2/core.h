@@ -63,7 +63,8 @@ char inputCharOption(char str[]);
 void inputCString(char* str, int minChar, int maxChar);
 
 //Test 9 display an array of phone numbers.
-void displayFormattedPhone(const char* str[]);
+void displayFormattedPhone(const char *str);
+
 
 // !!! DO NOT DELETE THE BELOW LINE !!!
 #endif // !CORE_H
