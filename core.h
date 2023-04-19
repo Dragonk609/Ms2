@@ -1,5 +1,5 @@
 /*/////////////////////////////////////////////////////////////////////////
-                        Assignment 1 - Milestone 3
+                        Assignment 1 - Milestone 2
 Full Name  : Michael Lomugdang
 Student ID#: 110751229
 Email      : mlomugdang1@myseneca.ca
@@ -22,7 +22,7 @@ piece of work is entirely of my own creation.
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // 
-// Copy your work done from Milestone #2 (core.h) into this file
+// Copy your work done from Milestone #1 (core.h) into this file
 // 
 // NOTE:
 // - Organize your functions into the below categories
@@ -62,9 +62,11 @@ char inputCharOption(char str[]);
 //Test 5 If certain string is entered it'll return.
 void inputCString(char* str, int minChar, int maxChar);
 
-//Test 9 display an array of phone numbers.
-void displayFormattedPhone(const char* str);
+// same as test 5 but for numbers
+void inputCStringNumbers(char* str, int minChar, int maxChar);
 
+//Test 9 display an array of phone numbers.
+void displayFormattedPhone(const char *str);
 
 
 // !!! DO NOT DELETE THE BELOW LINE !!!

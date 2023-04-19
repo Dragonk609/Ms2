@@ -1,5 +1,5 @@
 /*/////////////////////////////////////////////////////////////////////////
-                        Assignment 1 - Milestone 3
+                        Assignment 1 - Milestone 2
 Full Name  : Michael Lomugdang
 Student ID#: 110751229
 Email      : mlomugdang1@myseneca.ca
@@ -15,11 +15,9 @@ piece of work is entirely of my own creation.
 
 #include <stdio.h>
 
-#include "core.h"
-
-//////////////////////////////////////
-// USER INTERFACE FUNCTIONS
-//////////////////////////////////////
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 
 // Clear the standard input buffer
 void clearInputBuffer(void)
@@ -31,7 +29,7 @@ void clearInputBuffer(void)
     }
 }
 
-// Wait for user to input the "enter" key to continue
+// Wait for user to input the "enter" key to continue 
 void suspend(void)
 {
     printf("<ENTER> to continue...");
@@ -39,15 +37,6 @@ void suspend(void)
     putchar('\n');
 }
 
-
-//////////////////////////////////////
-// USER INPUT FUNCTIONS
-//////////////////////////////////////
-
-//
-// Copy your work done from Milestone #2 (core.c) into this file
-// - Organize your functions in the same order as they are listed in the core.h file
-//
 // Error Until input is valid
 int inputInt(void) {
     char character = ' ';
@@ -182,41 +171,6 @@ void inputCString(char* str, int minChar, int maxChar) {
     }
 }
 
-// This function is the same as inputCString but is exclusively for numbers
-void inputCStringNumbers(char* str, int minChar, int maxChar) {
-    int valid_input = 1;
-    char ch = 'a';
-
-    while (valid_input == 1) {
-        int len = 0;
-        // Takes a string as input until it sees a newline character
-        while (ch != '\n' && len <= maxChar) {
-            ch = getchar();
-            str[len] = ch;
-            len++;
-        };
-
-        // If the string is less than or equal to the maxChars we will just add '\0' to the end to mark the end of the string
-        if (ch == '\n' && len <= (maxChar + 1)) {
-            len--;
-            str[len] = '\0';
-        }
-        // If length is more than maxChar, we will add '\0' to the end and ignore the extra characters. We will also remove the extra characters from the buffer.
-        else {
-            str[maxChar] = '\0';
-            clearInputBuffer();
-        }
-
-        if (minChar == maxChar && len != minChar) {
-            printf("Invalid 10-digit number! Number: ");
-            ch = 'a';
-        }
-        else {
-            valid_input = 0;
-        }
-    }
-}
-
 // display an array of phone numbers
 void displayFormattedPhone(const char* str) {
     int num = 0, i;
@@ -250,9 +204,3 @@ void displayFormattedPhone(const char* str) {
             num++;
     }
 }
-
-
-//////////////////////////////////////
-// UTILITY FUNCTIONS
-//////////////////////////////////////
-

@@ -30,6 +30,6 @@ int main(void)
     printf("Imported %d appointment records...\n\n", appointmentCount);
 
     menuMain(&data);
-    
+
     return 0;
 }

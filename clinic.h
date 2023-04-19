@@ -1,5 +1,5 @@
 /*/////////////////////////////////////////////////////////////////////////
-                        Assignment 1 - Milestone 3
+                        Assignment 1 - Milestone 2
 Full Name  : Michael Lomugdang
 Student ID#: 110751229
 Email      : mlomugdang1@myseneca.ca
@@ -34,55 +34,24 @@ piece of work is entirely of my own creation.
 #define PHONE_LEN 10
 
 
-// MS#3 Additional macro's:
-// ToDo:
-
-#define MIN_INTERVAL 30
-#define START_TIME 10
-#define END_TIME 14
-
-
 //////////////////////////////////////
 // Structures
 //////////////////////////////////////
 
 // Data type: Phone
-// (Copy your code from MS#2)
+// ToDo:
 struct Phone {
     char description[PHONE_DESC_LEN + 1];
     char number[PHONE_LEN + 1];
 };
 
-
 // Data type: Patient 
-// (Copy your code from MS#2)
+// ToDo:
 struct Patient {
     int patientNumber;
     char name[NAME_LEN];
     struct Phone phone;
 };
-// ------------------- MS#3 -------------------
-
-// Data type: Time
-// ToDo:
-struct Time {
-    int hour, min;
-};
-
-// Data type: Date
-// ToDo:
-struct Date {
-    int day, year, month;
-};
-
-// Data type: Appointment
-// ToDo:
-struct Appointment {
-    int patientNumber;
-    struct Date date;
-    struct Time time;
-};
-
 
 // ClinicData type: Provided to student
 // !!! DO NOT MODIFY THIS DATA TYPE !!!
@@ -90,8 +59,6 @@ struct ClinicData
 {
     struct Patient* patients;
     int maxPatient;
-    struct Appointment* appointments;
-    int maxAppointments;
 };
 
 
@@ -105,14 +72,6 @@ void displayPatientTableHeader(void);
 
 // Displays a single patient record in FMT_FORM | FMT_TABLE format
 void displayPatientData(const struct Patient* patient, int fmt);
-
-// Display's appointment schedule headers (date-specific or all records)
-void displayScheduleTableHeader(const struct Date* date, int isAllRecords);
-
-// Display a single appointment record with patient info. in tabular format
-void displayScheduleData(const struct Patient* patient,
-                         const struct Appointment* appoint,
-                         int includeDateField);
 
 
 //////////////////////////////////////
@@ -128,8 +87,12 @@ void menuPatient(struct Patient patient[], int max);
 // Menu: Patient edit
 void menuPatientEdit(struct Patient* patient);
 
-// Menu: Appointment Management
-void menuAppointment(struct ClinicData* data);
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!! ALL the below functions need defining       !!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// !!! DO NOT MODIFY THE BELOW PROTOTYPES !!!
 
 // Display's all patient data in the FMT_FORM | FMT_TABLE format
 void displayAllPatients(const struct Patient patient[], int max, int fmt);
@@ -147,32 +110,6 @@ void editPatient(struct Patient patient[], int max);
 void removePatient(struct Patient patient[], int max);
 
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// Milestone #3 mandatory functions...
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// View ALL scheduled appointments
-// Todo:
-
-void viewAllAppointments(struct ClinicData* data);
-
-
-// View appointment schedule for the user input date
-// Todo:
-
-void viewAppointmentSchedule(struct ClinicData* data);
-
-// Add an appointment record to the appointment array
-// Todo:
-
-void addAppointment(struct Appointment* app, int, struct Patient* pt, int);
-
-// Remove an appointment record from the appointment array
-// Todo:
-
-void removeAppointment(struct Appointment* app, int, struct Patient* pt, int);
-
-
 //////////////////////////////////////
 // UTILITY FUNCTIONS
 //////////////////////////////////////
@@ -188,18 +125,7 @@ int nextPatientNumber(const struct Patient patient[], int max);
 
 // Find the patient array index by patient number (returns -1 if not found)
 int findPatientIndexByPatientNum(int patientNumber,
-                                 const struct Patient patient[], int max);
-
-// ERROR CHECKER//
-
-// Checks to see whether a time slot is available
-int timeSlotAvailable(struct Date date, struct Time time, struct Appointment* app, int maxAppointments);
-
-// Checks to see which is the next slot that is available and return the index
-int nextSlotAvailable(struct Appointment* app, int maxAppointments);
-
-// Checks to see if an appointment is valid
-int validSlotAppointment(int patientNumber, struct Date date, struct Appointment* app, int maxAppointments);
+    const struct Patient patient[], int max);
 
 
 //////////////////////////////////////
@@ -211,20 +137,6 @@ void inputPatient(struct Patient* patient);
 
 // Get user input for phone contact information
 void inputPhoneData(struct Phone* phone);
-
-
-
-
-//////////////////////////////////////
-// FILE FUNCTIONS
-//////////////////////////////////////
-
-// Import patient data from file into a Patient array (returns # of records read)
-int importPatients(const char* datafile, struct Patient patients[], int max);
-
-// Import appointment data from file into an Appointment array (returns # of records read)
-int importAppointments(const char* datafile, struct Appointment appoints[], int max);
-
 
 
 #endif // !CLINIC_H
